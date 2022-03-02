@@ -1,11 +1,11 @@
-import NavBar from "./component/NavBar";
+import Main from "./component/Main";
 
 function App() {
-  return (
-    <div className="App">
-      <NavBar/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Main/>
+        </div>
+    );
 }
 
 export default App;
