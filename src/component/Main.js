@@ -7,12 +7,12 @@ const Main = () => {
 
     const [cartShow,setCartShow] = useState(false)
     const [cartProduct, setCartProduct] = useState([]);
-    console.log(cartProduct)
+    // console.log(cartProduct)
 
     return (
         <>
-            <NavBar cartShow={cartShow} setCartShow={setCartShow} />
-            <Product cartProduct={cartProduct} setCartProduct={setCartProduct} />
+            <NavBar cartShow={cartShow} setCartShow={setCartShow} cartProduct={cartProduct} />
+            <Product cartProduct={cartProduct} setCartProduct={setCartProduct} cartShow={cartShow} setCartShow={setCartShow} />
             <Cart cartShow={cartShow} setCartShow={setCartShow} cartProduct={cartProduct} setCartProduct={setCartProduct}/>
         </>
     );
