@@ -3,7 +3,7 @@ import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import {BsStar, BsStarFill} from "react-icons/bs";
 import useFetch from "../customHook/useFetch";
 
-const Product = ({cartProduct, setCartProduct, cartShow, setCartShow}) => {
+const Product = ({cartProduct, setCartProduct, setCartShow}) => {
 
    const handleAddToCart = (cartItem) => {
       setCartShow(true)
@@ -38,9 +38,9 @@ const Product = ({cartProduct, setCartProduct, cartShow, setCartShow}) => {
                                    <div className='card-rating mb-2 d-flex align-items-center gap-2'>
                                       {
                                          [...Array(5)].map((each, index) => (
-                                             index < Math.floor(item.rating.rate) ? <BsStarFill
-                                                 color='#ffc107' key={index}/> : <BsStar color='#000'
-                                                                                         key={index}/>
+                                             index < Math.floor(item.rating.rate) ?
+                                             <BsStarFill color='#ffc107' key={index}/> :
+                                             <BsStar color='#000' key={index}/>
                                          ))
                                       }
                                       ( {Math.floor(item.rating.rate)} )
@@ -61,7 +61,6 @@ const Product = ({cartProduct, setCartProduct, cartShow, setCartShow}) => {
                                           variant="primary"
                                           disabled={cartProduct.find(cp => cp.id === item.id)}
                                           onClick={() => handleAddToCart(item)}>{cartProduct.find(cp => cp.id === item.id) ? 'Added To Cart' : 'Add To Cart'}
-
                                       </Button>
                                    </div>
                                 </div>

@@ -12,7 +12,7 @@ const Main = () => {
     return (
         <>
             <NavBar cartShow={cartShow} setCartShow={setCartShow} cartProduct={cartProduct} />
-            <Product cartProduct={cartProduct} setCartProduct={setCartProduct} cartShow={cartShow} setCartShow={setCartShow} />
+            <Product cartProduct={cartProduct} setCartProduct={setCartProduct} setCartShow={setCartShow} />
             <Cart cartShow={cartShow} setCartShow={setCartShow} cartProduct={cartProduct} setCartProduct={setCartProduct}/>
         </>
     );

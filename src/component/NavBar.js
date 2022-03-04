@@ -9,7 +9,7 @@ const NavBar = ({cartShow, setCartShow, cartProduct}) => {
        <div className='header-section sticky-top pt-3'>
           <Container fluid>
              <Row>
-                <Col md={3}>
+                <Col md={2}>
                    <Navbar.Brand className='align-self-baseline d-flex p-0' href="#home">
                                 <span
                                     className="cs-h-50 bg-primary text-light px-2 d-flex align-items-center rounded">Blue</span>
@@ -17,8 +17,7 @@ const NavBar = ({cartShow, setCartShow, cartProduct}) => {
                    </Navbar.Brand>
                 </Col>
 
-
-                <Col md={9}>
+                <Col md={10}>
                    <Nav className='ms-auto d-flex justify-content-end gap-2'>
                       <div className='d-flex flex-column align-items-center'>
                          <InputGroup className="header-icon cs-h-50 header-search">

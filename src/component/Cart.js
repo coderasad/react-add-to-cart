@@ -42,7 +42,7 @@ const Cart = ({cartShow, setCartShow, cartProduct, setCartProduct}) => {
                 <Col md={12}>
                    <Row className='my-2 gx-3'>
                       <Col md={10}>
-                         <Row>
+                         <Row className='max-h-220'>
                             {
                                cartProduct.map(item => (
                                    <Col key={item.id} md={3} className='mb-3'>
@@ -100,7 +100,7 @@ const Cart = ({cartShow, setCartShow, cartProduct, setCartProduct}) => {
                          <div className="border rounded p-5 fw-bold">
                              <div className="d-flex justify-content-between">
                                 <span>Total Price:</span>
-                                <span> {cartProduct.map(data => data.price)} </span>
+                                <span> $500 </span>
                              </div>
                              <div className="d-flex justify-content-between">
                                 <span>Discount:</span>
