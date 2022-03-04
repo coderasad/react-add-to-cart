@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
-import {Col, Container, Row} from "react-bootstrap";
+import React, {useEffect, useState} from 'react';
+import {Col, Container, Form, Row} from "react-bootstrap";
 import {IoIosCloseCircle, IoMdClose} from "react-icons/io";
 import {BiUpArrow, BiDownArrow} from "react-icons/bi";
-import {logDOM} from "@testing-library/react";
 
 const Cart = ({cartShow, setCartShow, cartProduct, setCartProduct}) => {
 
    const [totalPrice, setTotalPrice] = useState(0)
+   const [discount, setDiscount]     = useState(0)
+
    const handleRemoveCartItem = (index) => {
       const newCart = cartProduct.filter(cp => cp.id !== index)
       setCartProduct([...newCart])
@@ -29,6 +30,19 @@ const Cart = ({cartShow, setCartShow, cartProduct, setCartProduct}) => {
       }
    }
 
+   const handleCouponSubmit = (e) => {
+      e.preventDefault()
+      const coupon = null;
+      console.log('handleCouponSubmit')
+   }
+
+   useEffect(() => {
+      console.log(cartProduct, 'cartProduct')
+      const subTotal = cartProduct.reduce((acc, cur) => acc + (cur.price * cur.qty), 0)
+      setTotalPrice(subTotal);
+
+   }, [cartProduct])
+
    return (
        <div
            className={cartShow === false ? 'cart-section rounded border ' : 'cart-section rounded border cart-show'}>
@@ -42,7 +56,7 @@ const Cart = ({cartShow, setCartShow, cartProduct, setCartProduct}) => {
                 <Col md={12}>
                    <Row className='my-2 gx-3'>
                       <Col md={10}>
-                         <Row className='max-h-220'>
+                         <Row className='d-flex justify-content-center max-h-220'>
                             {
                                cartProduct.map(item => (
                                    <Col key={item.id} md={3} className='mb-3'>
@@ -97,20 +111,25 @@ const Cart = ({cartShow, setCartShow, cartProduct, setCartProduct}) => {
                          </Row>
                       </Col>
                       <Col md={2}>
-                         <div className="border rounded p-5 fw-bold">
-                             <div className="d-flex justify-content-between">
-                                <span>Total Price:</span>
-                                <span> $500 </span>
-                             </div>
-                             <div className="d-flex justify-content-between">
-                                <span>Discount:</span>
-                                <span className='text-danger'> $1200</span>
-                             </div>
+                         <div className="border rounded p-4 fw-bold">
+                            <div className='mb-3'>
+                               <Form onSubmit={handleCouponSubmit}>
+                                  <Form.Control name='coupon' type="text" placeholder="Enter Coupon Here" />
+                               </Form>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                               <span>Total Price:</span>
+                               <span> ${totalPrice.toFixed(2)} </span>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                               <span>Discount:</span>
+                               <span className='text-danger'> ${discount}</span>
+                            </div>
                             <hr/>
-                             <div className="d-flex justify-content-between">
-                                <span>Total:</span>
-                                <span> $1200</span>
-                             </div>
+                            <div className="d-flex justify-content-between">
+                               <span>Total:</span>
+                               <span> ${(totalPrice - discount).toFixed(2)}</span>
+                            </div>
                          </div>
                       </Col>
                    </Row>
