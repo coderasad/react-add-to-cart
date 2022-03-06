@@ -3,7 +3,7 @@ import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import {BsStar, BsStarFill} from "react-icons/bs";
 import useFetch from "../customHook/useFetch";
 
-const Product = ({cartProduct, setCartProduct, setCartShow}) => {
+const Product = ({cartProduct, setCartProduct, cartShow, setCartShow}) => {
 
    const handleAddToCart = (cartItem) => {
       setCartShow(true)
@@ -19,7 +19,7 @@ const Product = ({cartProduct, setCartProduct, setCartShow}) => {
    const errorMsg   = <p className='text-center'>{error}</p>
 
    return (
-       <div className='bg-light mt-3 py-5'>
+       <div className={`bg-light mt-3 py-5 ${cartShow && 'mb-260'} `} >
           <Container>
              <Row>
                 {isLoading && loadingMsg}
@@ -29,8 +29,18 @@ const Product = ({cartProduct, setCartProduct, setCartShow}) => {
                        <Col md={3} className='mb-4' key={item.id}>
 
                           <Card className={`h-100`}>
-                             <div className='card-image'>
+                             <div className='card-image position-relative overflow-hidden'>
                                 <Card.Img variant="top" src={item.image}/>
+                                <div className="d-flex justify-content-between gap-3 start-0 position-absolute w-100 add-price-btn">
+                                   <Button className='w-100'
+                                           variant="warning">${item.price}</Button>
+                                   <Button
+                                       className='w-100'
+                                       variant="primary"
+                                       disabled={cartProduct.find(cp => cp.id === item.id)}
+                                       onClick={() => handleAddToCart(item)}>{cartProduct.find(cp => cp.id === item.id) ? 'Added To Cart' : 'Add To Cart'}
+                                   </Button>
+                                </div>
                              </div>
                              <Card.Body>
                                 <div className="d-flex flex-column h-100">
@@ -47,13 +57,16 @@ const Product = ({cartProduct, setCartProduct, setCartShow}) => {
                                    </div>
 
                                    <div className='mb-3'>
-                                      <Card.Title className='text-primary'>{item.title}</Card.Title>
+                                      <Card.Title className='text-primary'>
+                                         {item.title.length > 40
+                                          ? `${item.title.slice(0, 40)} ... ` : item.title}
+                                      </Card.Title>
                                       <Card.Text>
-                                         {item.description.length > 200
-                                             ? `${item.description.slice(0, 200)} ... ` : item.description}
+                                         {item.description.length > 100
+                                             ? `${item.description.slice(0, 100)} ... ` : item.description}
                                       </Card.Text>
                                    </div>
-                                   <div className="d-flex justify-content-between h-100">
+                                   {/*<div className="d-flex justify-content-between h-100">
                                       <Button className='align-self-end'
                                               variant="warning">${item.price}</Button>
                                       <Button
@@ -62,7 +75,7 @@ const Product = ({cartProduct, setCartProduct, setCartShow}) => {
                                           disabled={cartProduct.find(cp => cp.id === item.id)}
                                           onClick={() => handleAddToCart(item)}>{cartProduct.find(cp => cp.id === item.id) ? 'Added To Cart' : 'Add To Cart'}
                                       </Button>
-                                   </div>
+                                   </div>*/}
                                 </div>
                              </Card.Body>
                           </Card>
