@@ -19,14 +19,14 @@ const Product = ({cartProduct, setCartProduct, cartShow, setCartShow}) => {
    const errorMsg   = <p className='text-center'>{error}</p>
 
    return (
-       <div className={`bg-light mt-3 py-5 ${cartShow && 'mb-260'} `} >
+       <div className={`bg-light py-5 ${cartShow && 'mb-260'} `} >
           <Container>
              <Row>
                 {isLoading && loadingMsg}
                 {error && errorMsg}
                 {
                    data?.map(item => (
-                       <Col md={3} className='mb-4' key={item.id}>
+                       <Col sm={6} md={4} lg={3} className='mb-4' key={item.id}>
 
                           <Card className={`h-100`}>
                              <div className='card-image position-relative overflow-hidden'>

@@ -1,0 +1,25 @@
+/* make the customizations */
+$primary: #518FD8;
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+
+.cs-h-50 {
+  height: 50px;
+
+  @include media-breakpoint-down(sm) {
+    height: 34px;
+  }
+}
+
+.form-control {
+  border-color: $primary;
+}
+
+@include media-breakpoint-down(sm) {
+  h5 {
+    font-size: 1rem !important;
+  }
+  p {
+    font-size: 14px !important;
+  }
+}

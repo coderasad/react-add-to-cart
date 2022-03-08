@@ -1,6 +1,9 @@
 .card-image {
   height: 150px;
   padding: 15px;
+  @include media-breakpoint-down(sm){
+    height: 100px;
+  }
 
   img {
     width: 100%;
@@ -35,6 +38,11 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  @include media-breakpoint-down(sm){
+    font-size: 8px;
+    height: 20px;
+    width: 20px;
+  }
 }
 
 @keyframes myMove {
