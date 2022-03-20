@@ -2,7 +2,7 @@ import React                              from 'react';
 import {
     Button,
     Col,
-    Container,
+    Container, Form,
     FormControl,
     InputGroup,
     Nav,
@@ -10,12 +10,12 @@ import {
     OverlayTrigger,
     Row,
     Tooltip
-}                                         from "react-bootstrap";
+} from "react-bootstrap";
 import {BsCartCheck, BsSearch, BsWallet2} from "react-icons/bs";
 import {BiUser}                           from "react-icons/bi";
 import {NavLink}                          from "react-router-dom";
 
-const NavBar = ({cartShow, setCartShow, cartProduct}) => {
+const NavBar = ({ cartShow, setCartShow, cartProduct, handleSearch }) => {
 
     return (
         <div className='header-section sticky-top py-3'>
@@ -32,15 +32,19 @@ const NavBar = ({cartShow, setCartShow, cartProduct}) => {
                     <Col>
                         <div className='d-flex justify-content-end gap-2'>
                             <div className='d-flex flex-column align-items-center d-none d-sm-block'>
-                                <InputGroup className="header-icon cs-h-50 header-search">
-                                    <FormControl
-                                        placeholder="Search"
-                                        className='cs-h-50'
-                                    />
-                                    <Button className='text-light header-icon cs-h-50' id="button-addon2">
-                                        <BsSearch/>
-                                    </Button>
-                                </InputGroup>
+                                <Form>
+                                    <InputGroup className="header-icon cs-h-50 header-search">
+                                        <FormControl
+                                            name='productName'
+                                            placeholder="Search"
+                                            className='cs-h-50'
+                                            onChange={e=> handleSearch(e.target.value)}
+                                        />
+                                        <Button className='text-light header-icon cs-h-50 d-flex align-items-center justify-content-center' id="button-addon2">
+                                            <BsSearch/>
+                                        </Button>
+                                    </InputGroup>
+                                </Form>
                             </div>
                             <div className='d-flex flex-column align-items-center'>
                                 <OverlayTrigger

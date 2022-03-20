@@ -8,20 +8,26 @@ import Product                                from "./component/Product";
 function App() {
     const [cartShow, setCartShow]       = useState(false)
     const [cartProduct, setCartProduct] = useState([]);
-    let location                        = useLocation();
+    const [searchTerm, setSearchTerm] = useState('');
 
+    const handleSearch = (value) => {
+        setSearchTerm(value)
+    }
+    
+    let location                        = useLocation();
+    
     useEffect(() => {
         setCartShow(false)
     }, [location.pathname])
 
 
     return (<div className="App">
-        <NavBar cartShow={cartShow} setCartShow={setCartShow} cartProduct={cartProduct}/>
+        <NavBar cartShow={cartShow} setCartShow={setCartShow} cartProduct={cartProduct} handleSearch={handleSearch} />
 
         <Routes>
             <Route path='/'
                    element={<Product cartProduct={cartProduct} setCartProduct={setCartProduct} setCartShow={setCartShow}
-                                     cartShow={cartShow}/>}/>
+                   searchTerm={searchTerm} cartShow={cartShow} /> }/>
 
             <Route path='/checkout' element={<Checkout/>}/>
         </Routes>
