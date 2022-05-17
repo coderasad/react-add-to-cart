@@ -1,4 +1,10 @@
 import {Route, Routes, useLocation} from "react-router-dom"
+import Checkout                               from "./component/CheckOut";
+import NavBar                                 from "./component/NavBar";
+import React, {useEffect, useState}           from "react";
+import Cart                                   from "./component/Cart";
+import Product                                from "./component/Product";
+import {Route, Routes, useLocation} from "react-router-dom"
 import Checkout from "./component/CheckOut";
 import NavBar from "./component/NavBar";
 import React, {useContext, useEffect, useState} from "react";
