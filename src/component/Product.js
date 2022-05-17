@@ -1,20 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import {BsStar, BsStarFill} from "react-icons/bs";
 import useFetch from "../customHook/useFetch";
+import Context from "../context/Context";
+import {CartContext} from "../context/CartContext";
 
-const Product = ({cartProduct, setCartProduct, cartShow, setCartShow}) => {
-
+const Product = () => {
+   const {cartProduct, cartShow,setCartShow,setCartProduct,searchTerm} = useContext(CartContext)
    const handleAddToCart = (cartItem) => {
       setCartShow(true)
       cartItem.qty =1;
       setCartProduct([...cartProduct, cartItem])
    }
 
-   const {data, isLoading, error} = useFetch(
+   let  {data, isLoading, error} = useFetch(
        "https://fakestoreapi.com/products"
    )
-
+   /*if (data !== null) {
+      const performSearch = () => {
+          return data.filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
+      }
+      data                = performSearch();
+  }*/
    const loadingMsg = <p className='text-center'>Loading...</p>;
    const errorMsg   = <p className='text-center'>{error}</p>
 
@@ -25,9 +32,7 @@ const Product = ({cartProduct, setCartProduct, cartShow, setCartShow}) => {
                 {isLoading && loadingMsg}
                 {error && errorMsg}
                 {
-                   data?.map(item => (
-                       <Col md={3} className='mb-4' key={item.id}>
-
+                  data?.map(item => (<Col sm={6} md={4} lg={3} className='mb-4' key={item.id}>
                           <Card className={`h-100`}>
                              <div className='card-image position-relative overflow-hidden'>
                                 <Card.Img variant="top" src={item.image}/>

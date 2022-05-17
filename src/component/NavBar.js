@@ -1,11 +1,14 @@
-import React                                                                      from 'react';
-import {Badge, Button, Col, Container, FormControl, InputGroup, Nav, Navbar, Row} from "react-bootstrap";
+import React, {useContext} from 'react';
+import { Button, Col, Container,Form, FormControl, InputGroup, Nav, Navbar, Row} from "react-bootstrap";
 import {BsCartCheck, BsSearch, BsWallet2}                                         from "react-icons/bs";
 import {BiUser}                                                                   from "react-icons/bi";
 import {NavLink}                                                                  from "react-router-dom";
+import Context from "../context/Context";
+import {CartContext} from "../context/CartContext";
 
-const NavBar = ({cartShow, setCartShow, cartProduct}) => {
 
+const NavBar = () => {
+    const {cartShow,setCartShow,cartProduct, handleSearch} = useContext(CartContext);
     return (
         <div className='header-section sticky-top pt-3'>
             <Container fluid>
@@ -21,14 +24,19 @@ const NavBar = ({cartShow, setCartShow, cartProduct}) => {
                     <Col md={10}>
                         <Nav className='ms-auto d-flex justify-content-end gap-2'>
                             <div className='d-flex flex-column align-items-center'>
-                                <InputGroup className="header-icon cs-h-50 header-search">
-                                    <FormControl
-                                        placeholder="Search"
-                                    />
-                                    <Button className='text-light' id="button-addon2">
-                                        <BsSearch/>
-                                    </Button>
-                                </InputGroup>
+                            <Form>
+                                    <InputGroup className="header-icon cs-h-50 header-search">
+                                        <FormControl
+                                            name='productName'
+                                            placeholder="Search"
+                                            className='cs-h-50'
+                                            onChange={e=> handleSearch(e.target.value)}
+                                        />
+                                        <Button className='text-light header-icon cs-h-50 d-flex align-items-center justify-content-center' id="button-addon2">
+                                            <BsSearch/>
+                                        </Button>
+                                    </InputGroup>
+                                </Form>
                             </div>
                             <div className='d-flex flex-column align-items-center'>
                                 <Nav.Link
