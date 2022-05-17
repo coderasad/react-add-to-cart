@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import axios from "axios";
 
 const useFetch = (url) => {
@@ -18,26 +18,7 @@ const useFetch = (url) => {
                 setError('Fetch is not successfully');
                 setIsLoading(false)
             })
-
-
-        /*fetch(url)
-            .then((res) => {
-                if (!res.ok) {
-                    throw Error('Fetch is not successfully')
-                } else {
-                    return res.json();
-                }
-            })
-            .then((data) => {
-                setProducts(data)
-                setIsLoading(false);
-                setError(null);
-            })
-            .catch((error) => {
-                setError(error.message);
-                setIsLoading(false)
-            })*/
-    }, []);
+    },[]);
 
     return {data, isLoading, error}
 };

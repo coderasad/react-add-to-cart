@@ -1,16 +1,15 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {Col, Container, Form, Row}   from "react-bootstrap";
 import {IoIosCloseCircle, IoMdClose} from "react-icons/io";
 import {BiUpArrow, BiDownArrow}      from "react-icons/bi";
 import {NavLink}                     from "react-router-dom";
 import useCart from "../hooks/useCart";
-import Context from "../context/Context";
 import {CartContext} from "../context/CartContext";
 
 const Cart = () => {
 
     const {cartShow, setCartShow,cartProduct,setCartProduct} = useContext(CartContext)
-    const [totalPrice, setTotalPrice,discount,setDiscount,error, setError,errorShow, setErrorShow,handleRemoveCartItem,handleProductQtyIncrement,handleProductQtyDecrement,handleCouponSubmit,] = useCart(cartProduct, setCartProduct,setCartShow)
+    const [totalPrice, discount,error, errorShow, handleRemoveCartItem,handleProductQtyIncrement,handleProductQtyDecrement,] = useCart(cartProduct, setCartProduct,setCartShow)
 
 
     return (<div

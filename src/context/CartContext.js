@@ -1,5 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
+import React, {createContext, useState} from 'react';
 
 export const CartContext = createContext();
 
@@ -7,7 +6,6 @@ export const CartContext = createContext();
 const CartProvider = ({children}) => {
    const [cartShow, setCartShow]       = useState(false)
    const [cartProduct, setCartProduct] = useState([]);
-   // let location                        = useLocation();
    const [searchTerm, setSearchTerm] = useState('');
 
    const handleSearch = (value) => {

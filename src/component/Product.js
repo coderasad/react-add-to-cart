@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import {BsStar, BsStarFill} from "react-icons/bs";
 import useFetch from "../customHook/useFetch";
-import Context from "../context/Context";
 import {CartContext} from "../context/CartContext";
 
 const Product = () => {
@@ -16,12 +15,12 @@ const Product = () => {
    let  {data, isLoading, error} = useFetch(
        "https://fakestoreapi.com/products"
    )
-   /*if (data !== null) {
+   if (data !== null) {
       const performSearch = () => {
           return data.filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
       }
       data                = performSearch();
-  }*/
+  }
    const loadingMsg = <p className='text-center'>Loading...</p>;
    const errorMsg   = <p className='text-center'>{error}</p>
 

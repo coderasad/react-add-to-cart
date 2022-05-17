@@ -8,11 +8,11 @@ import CartProvider from "./context/CartContext";
 // import "~bootstrap/scss/bootstrap";
 
 ReactDOM.render(
-  <BrowserRouter>
-     <CartProvider >
-    <App />
-        </CartProvider>
-  </BrowserRouter>,
+    <BrowserRouter>
+       <CartProvider>
+          <App/>
+       </CartProvider>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 

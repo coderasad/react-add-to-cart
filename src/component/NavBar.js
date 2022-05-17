@@ -3,7 +3,6 @@ import { Button, Col, Container,Form, FormControl, InputGroup, Nav, Navbar, Row}
 import {BsCartCheck, BsSearch, BsWallet2}                                         from "react-icons/bs";
 import {BiUser}                                                                   from "react-icons/bi";
 import {NavLink}                                                                  from "react-router-dom";
-import Context from "../context/Context";
 import {CartContext} from "../context/CartContext";
 
 
