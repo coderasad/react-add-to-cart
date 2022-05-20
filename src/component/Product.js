@@ -15,6 +15,7 @@ const Product = () => {
    let  {data, isLoading, error} = useFetch(
        "https://fakestoreapi.com/products"
    )
+   console.log(data, 'data');
    if (data !== null) {
       const performSearch = () => {
           return data.filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()));

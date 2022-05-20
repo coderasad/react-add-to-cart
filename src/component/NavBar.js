@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { Button, Col, Container,Form, FormControl, InputGroup, Nav, Navbar, Row} from "react-bootstrap";
 import {BsCartCheck, BsSearch, BsWallet2}                                         from "react-icons/bs";
-import {BiUser}                                                                   from "react-icons/bi";
+import {BiUser,BiLogInCircle}                                                                   from "react-icons/bi";
 import {NavLink}                                                                  from "react-router-dom";
 import {CartContext} from "../context/CartContext";
 
@@ -62,6 +62,13 @@ const NavBar = () => {
                                     </span>
                                 </Nav.Link>
                                 Cart
+                            </div>
+                            <div className='d-flex flex-column align-items-center'>
+                                <Nav.Link as={NavLink} to='/signup'
+                                    className='align-items-center bg-primary d-flex header-icon cs-h-50 justify-content-center rounded text-light'>
+                                    <BiLogInCircle/>
+                                </Nav.Link>
+                                Register
                             </div>
                         </Nav>
                     </Col>

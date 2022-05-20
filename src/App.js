@@ -4,11 +4,13 @@ import NavBar from "./component/NavBar";
 import React, {useContext, useEffect} from "react";
 import Cart from "./component/Cart";
 import Product from "./component/Product";
+import Register from "./component/Register";
 import {CartContext} from "./context/CartContext";
+
 
 function App() {
 
-   let location                        = useLocation();
+   let location        = useLocation();
    const {setCartShow} = useContext(CartContext)
 
    useEffect(() => {
@@ -17,17 +19,18 @@ function App() {
 
    return (
 
-          <div className="App">
-             <NavBar />
+       <div className="App">
+          <NavBar/>
 
-             <Routes>
-                <Route path='/'  element={<Product />} />
+          <Routes>
+             <Route path='/' element={<Product/>}/>
+             <Route path='/signup' element={<Register/>}/>
+             {/*<Route path='/signup' element={<Register/>} />*/}
+             <Route path='/checkout' element={<Checkout/>}/>
+          </Routes>
 
-                <Route path='/checkout' element={<Checkout />} />
-             </Routes>
-
-             <Cart />
-          </div>
+          <Cart/>
+       </div>
 
    );
 }

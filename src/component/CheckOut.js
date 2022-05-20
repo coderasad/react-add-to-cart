@@ -10,7 +10,7 @@ import {CartContext} from "../context/CartContext";
 const Checkout = () => {
 
    const {cartShow, setCartShow,cartProduct,setCartProduct} = useContext(CartContext)
-   const [totalPrice, setTotalPrice,discount,setDiscount,error, setError,errorShow, setErrorShow,handleRemoveCartItem,handleProductQtyIncrement,handleProductQtyDecrement,handleCouponSubmit,] = useCart(cartProduct, setCartProduct,setCartShow)
+   const [totalPrice, setTotalPrice,discount,setDiscount,error, setError,errorShow, setErrorShow,handleRemoveCartItem,handleProductQtyIncrement,handleProductQtyDecrement,handleCouponSubmit] = useCart(cartProduct, setCartProduct,setCartShow)
 
    return (
         <div className={`bg-light mt-3 py-5`} >

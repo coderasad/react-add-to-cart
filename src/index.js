@@ -5,13 +5,17 @@ import App             from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import CartProvider from "./context/CartContext";
+import AuthProvider from "./context/AuthContext";
 // import "~bootstrap/scss/bootstrap";
 
 ReactDOM.render(
     <BrowserRouter>
-       <CartProvider>
-          <App/>
-       </CartProvider>
+       <AuthProvider>
+          <CartProvider>
+             <App/>
+          </CartProvider>
+       </AuthProvider>
+
     </BrowserRouter>,
   document.getElementById('root')
 );
