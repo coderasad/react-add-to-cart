@@ -6,6 +6,8 @@ import Cart from "./component/Cart";
 import Product from "./component/Product";
 import Register from "./component/Register";
 import {CartContext} from "./context/CartContext";
+import Payment from "./component/Payment";
+import Login from "./component/Login";
 
 
 function App() {
@@ -25,7 +27,8 @@ function App() {
           <Routes>
              <Route path='/' element={<Product/>}/>
              <Route path='/signup' element={<Register/>}/>
-             {/*<Route path='/signup' element={<Register/>} />*/}
+             <Route path='/login' element={<Login/>}/>
+             <Route path='/payment' element={<Payment/>} />
              <Route path='/checkout' element={<Checkout/>}/>
           </Routes>
 

@@ -1,27 +1,24 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {Button, Col, Container, Form, Row} from 'react-bootstrap'
 import {AuthContext} from "../context/AuthContext";
-import {useNavigate} from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
 
-
-const Register = () => {
-
+const Login = () => {
    let navigate = useNavigate();
    const {
-            user,
-            setRegisterEmail,
-            setRegisterPassword,
-            register,
+            setLoginEmail,
+            setLoginPassword,
+            login,
             regErrorMsg
-         } = useContext(AuthContext)
+         }      = useContext(AuthContext)
 
-   const handleRegister = () => {
-      regErrorMsg.email = '';
-      register();
-      if (regErrorMsg?.email === '') {
-         console.log('user.email')
+   const handleLogin = () => {
+      regErrorMsg.email    = '';
+      regErrorMsg.password = '';
+      login();
+      if (regErrorMsg?.email === '' && regErrorMsg?.password === '') {
          navigate('/');
-      } else {
+      }else{
          console.log('error')
       }
    }
@@ -31,22 +28,24 @@ const Register = () => {
        <div>
           <Container>
              <Row>
-                <Col className={'bg-light p-4 rounded'} md={{span: 4, offset: 4}}>
+                <Col className='bg-light p-4 rounded' md={{span: 4, offset: 4}}>
                    <div>
-                      <h3>Registration </h3>
+                      <h3> Login </h3>
                       <Form>
                          <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email"
                                           placeholder="Enter email"
                                           onChange={(event) => {
-                                             setRegisterEmail(event.target.value);
+                                             setLoginEmail(event.target.value);
                                           }
                                           }
                             />
                             {regErrorMsg.email &&
                                 <Form.Text className="text-danger">
-                                   {regErrorMsg.email}
+                                   {
+                                      regErrorMsg.email
+                                   }
                                 </Form.Text>
                             }
                          </Form.Group>
@@ -56,12 +55,19 @@ const Register = () => {
                             <Form.Control type="password"
                                           placeholder="Password"
                                           onChange={(event) => {
-                                             setRegisterPassword(event.target.value);
+                                             setLoginPassword(event.target.value);
                                           }}
                             />
+                            {regErrorMsg.password &&
+                                <Form.Text className="text-danger">
+                                   {
+                                      regErrorMsg.password
+                                   }
+                                </Form.Text>
+                            }
                          </Form.Group>
-                         <Button variant="primary" className='text-light' onClick={handleRegister}>
-                            Register
+                         <Button variant="primary" onClick={handleLogin}>
+                            Login
                          </Button>
                       </Form>
                    </div>
@@ -72,4 +78,4 @@ const Register = () => {
    )
 }
 
-export default Register
+export default Login

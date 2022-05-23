@@ -95,8 +95,8 @@ const Checkout = () => {
                                <span>Total:</span>
                                <span> ${(totalPrice - discount).toFixed(2)}  {errorShow}</span>
                             </div>
-                            <NavLink to='/checkout' className="btn btn-warning w-100 mt-3 checkout-section">
-                               Check out
+                            <NavLink to='/payment' className="btn btn-warning w-100 mt-3 checkout-section">
+                               Pay Now
                             </NavLink>
 
                             {/*coupon alert*/}

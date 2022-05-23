@@ -18,7 +18,11 @@ const AuthProvider = ({children}) => {
    const [loginPassword, setLoginPassword] = useState("");
 
    const [user, setUser] = useState({});
-   console.log(user, 'user')
+   //const [errorType, setErrorType] = useState('');
+   const [regErrorMsg, setRegErrorMsg] = useState({
+      email:'',
+      password:''
+   });
 
    onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -31,9 +35,21 @@ const AuthProvider = ({children}) => {
              registerEmail,
              registerPassword
          );
-         console.log(user);
       } catch (error) {
-         console.log(error.message);
+         if(error.message === "Firebase: Error (auth/email-already-in-use)."){
+            setRegErrorMsg(prevState => ({
+               ...prevState,
+               email:"Already Email Used!"
+            }));
+         }
+
+         if(error.message === "Firebase: Error (auth/invalid-email)."){
+            setRegErrorMsg(prevState => ({
+               ...prevState,
+               email: 'Invalid Email Address!'
+            }));
+         }
+         console.log(error.message)
       }
    };
 
@@ -44,9 +60,20 @@ const AuthProvider = ({children}) => {
              loginEmail,
              loginPassword
          );
-         console.log(user);
       } catch (error) {
-         console.log(error.message);
+         if(error.message === "Firebase: Error (auth/user-not-found)."){
+            setRegErrorMsg(prevState => ({
+               ...prevState,
+               email:'Email not found'
+            }));
+         }
+
+         if(error.message === "Firebase: Error (auth/wrong-password)."){
+            setRegErrorMsg(prevState => ({
+               ...prevState,
+               password: 'Wrong password'
+            }));
+         }
       }
    };
 
@@ -65,6 +92,8 @@ const AuthProvider = ({children}) => {
           setLoginEmail,
           loginPassword,
           setLoginPassword,
+          regErrorMsg,
+          // setRegErrorMsg,
           user,
           setUser,
           register,
