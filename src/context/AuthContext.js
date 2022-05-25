@@ -18,7 +18,6 @@ const AuthProvider = ({children}) => {
    const [loginPassword, setLoginPassword] = useState("");
 
    const [user, setUser] = useState({});
-   //const [errorType, setErrorType] = useState('');
    const [regErrorMsg, setRegErrorMsg] = useState({
       email:'',
       password:''
@@ -43,13 +42,19 @@ const AuthProvider = ({children}) => {
             }));
          }
 
-         if(error.message === "Firebase: Error (auth/invalid-email)."){
+         else if(error.message === "Firebase: Error (auth/invalid-email)."){
             setRegErrorMsg(prevState => ({
                ...prevState,
                email: 'Invalid Email Address!'
             }));
          }
-         console.log(error.message)
+         else{
+             setRegErrorMsg(prevState => ({
+                 ...prevState,
+                 email: 'Server Error!🤦‍♀️'
+             }))
+         }
+          console.log(error.message,'reg')
       }
    };
 
