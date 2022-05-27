@@ -27,13 +27,17 @@ const AuthProvider = ({children}) => {
       setUser(currentUser);
    });
 
-   const register = async () => {
+   const register = async (callback) => {
       try {
          const user = await createUserWithEmailAndPassword(
              auth,
              registerEmail,
              registerPassword
          );
+
+         if(callback){
+            callback();
+         }
       } catch (error) {
          if(error.message === "Firebase: Error (auth/email-already-in-use)."){
             setRegErrorMsg(prevState => ({

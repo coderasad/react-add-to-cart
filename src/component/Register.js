@@ -16,20 +16,11 @@ const Register = () => {
           }      = useContext(AuthContext)
 
     const handleRegister = () => {
-        register();
-
-        if(regErrorMsg.email === ''){
-            console.log('if')
-            navigate('/');
-        }else{
-            console.log('else')
-        }
+        register(()=>{
+           navigate('/');
+        });
     }
 
-
-    useEffect(()=>{
-        console.log(regErrorMsg.email, 'useEffect')
-    },[])
 
     return (
         <div>
