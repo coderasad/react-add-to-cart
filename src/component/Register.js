@@ -8,7 +8,6 @@ const Register = () => {
 
     let navigate = useNavigate();
     const {
-              user,
               setRegisterEmail,
               setRegisterPassword,
               register,

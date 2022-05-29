@@ -40,7 +40,7 @@ const Product = () => {
                                    <Button className='w-100'
                                            variant="warning">${item.price}</Button>
                                    <Button
-                                       className='w-100'
+                                       className='w-100' style={{fontSize:'14px'}}
                                        variant="primary"
                                        disabled={cartProduct.find(cp => cp.id === item.id)}
                                        onClick={() => handleAddToCart(item)}>{cartProduct.find(cp => cp.id === item.id) ? 'Added To Cart' : 'Add To Cart'}

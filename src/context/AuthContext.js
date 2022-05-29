@@ -62,13 +62,16 @@ const AuthProvider = ({children}) => {
       }
    };
 
-   const login = async () => {
+   const login = async (callback) => {
       try {
          const user = await signInWithEmailAndPassword(
              auth,
              loginEmail,
              loginPassword
          );
+          if(callback){
+              callback();
+          }
       } catch (error) {
          if(error.message === "Firebase: Error (auth/user-not-found)."){
             setRegErrorMsg(prevState => ({
@@ -102,7 +105,7 @@ const AuthProvider = ({children}) => {
           loginPassword,
           setLoginPassword,
           regErrorMsg,
-          // setRegErrorMsg,
+          setRegErrorMsg,
           user,
           setUser,
           register,
